@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>영화정보 | <%=movieInfo.name%></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	<!-- Font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+	<!-- Stylesheets -->
+	
+	<link href="plugin-frameworks/bootstrap.min.css" rel="stylesheet">
+	<link href="plugin-frameworks/swiper.css" rel="stylesheet">
+	<link href="fonts/ionicons.css" rel="stylesheet">
+	<link href="common/styles.css" rel="stylesheet">
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
+</head>
+<body>
+	
+	<header>
+		<a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
+		
+
+		
+		<a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
+		
+		<ul class="main-menu" id="main-menu">
+			<li><a href="httP://localhost:3000">Home</a></li>
+			<li><a href="#">Movies</a></li>
+			<li><a href="#">미구현</a></li>
+			<li><a href="#">미구현</a></li>
+			<li><a href="#">미구현</a></li>
+		</ul>
+		
+		<div class="clearfix"></div>
+	</header>
+	
+	
+	<div class="slider-main h-60x h-sm-auto pos-relative pt-95 pb-25">
+		<div class="img-bg bg-6 bg-layer-6"></div>
+		<div class="row h-100">
+			<div class="col-md-1"></div>
+			<div class="col-sm-12 col-md-8 h-100 h-sm-50">
+				<div class="dplay-tbl">
+					<div class="dplay-tbl-cell color-white mtb-30 pl-30">
+							<div class="sided-80x mb-20">
+								<div class="s-left">
+									<a href='<%=movieInfo.poster%>' target = "_blank"><img src="<%=movieInfo.poster%>"></a>
+								</div><!-- s-left -->
+								<div class="s-right">
+									<h2><a href="/detail/<%=movieInfo.No%>"><b class="pt-20"><%=movieInfo.name%></b></a></h2>
+									<h5>개요:&nbsp;&nbsp;<%=movieInfo.genre%>&nbsp;|&nbsp;<%=movieInfo.country%>&nbsp;|&nbsp;<%=movieInfo.runTime%>&nbsp;|&nbsp;<%=movieInfo.releaseDate%>개봉</h5>
+									<h5>감독:&nbsp;&nbsp;<%=movieInfo.director%></h5>
+									<h5>출연:&nbsp;&nbsp;<%=movieInfo.actor%></h5>
+								</div><!-- s-left -->
+							</div><!-- sided-80x -->
+						
+						<!--<h6><a class="plr-20 btn-brdr-grey color-white" href="#"><b>Continue Reading</b></a></h6>-->
+					</div><!-- dplay-tbl-cell -->
+				</div><!-- dplay-tbl -->
+			</div><!-- col-sm-6 -->
+			</div>
+	</div><!-- slider-main -->
+	
+	
+	<section class="bg-1-white ptb-0">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-1"></div>
+				<div class="col-md-12 col-lg-8 ptb-50 pr-30 pr-md-15">
+					<div>
+						<img src='<%=movieInfo.stealScene%>'>
+					</div>
+					<p class="mt-40 mt-sm-10"><%=movieInfo.story1%></p>
+					
+					<h3 class="mtb-50"><b><%=movieInfo.important%></b></h3>
+					
+					
+					<p class="mb-50"><%=movieInfo.story2%></p>
+					
+					<div class="brdr-grey-1 mt-50 mt-sm-20"></div>
+					<div class="mt-50 mb-20">
+						<div class="row">
+							<div class=" col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-30">
+									<div class="card h-100 min-h-350x">
+										<div class="bg-white h-130">
+											<!-- SETTING IMAGE WITH bg-10 -->
+											<div class="h-80 " id='area_pros'>
+													<area_pros></area_pros>
+											</div>
+												<div class="dplay-tbl">
+													<div class="pl-30">
+														<h4 class="mtb-10">
+														<b>때문에 이 영화가 좋아요</b></h4>
+														<ul class="list-li-mr-10 color-lt-black">
+															<li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i><%=cnt.cnt_pos%></li>
+														</ul>
+													</div>	
+												</div><!-- dplay-tbl -->
+										</div><!-- hot-news -->
+									</div><!-- card -->
+								</div><!-- col-lg-4 col-md-6 -->
+							
+							<div class=" col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-30">
+								<div class="card h-100 min-h-350x">
+									<div class="bg-white h-130"
+										<!-- SETTING IMAGE WITH bg-10 -->
+										<div class="h-80" id='area_cons'>
+											<area_cons></area_cons>
+										</div>
+											<div class="dplay-tbl">
+												<div class="pl-30">
+													<h4 class="mtb-10">
+													<b>때문에 이 영화가 싫어요</b></h4>
+													<ul class="list-li-mr-10 color-lt-black">
+														<li><i class="mr-5 font-12 ion-ios-chatbubble-outline"></i><%=cnt.cnt_neg%></li>
+													</ul>
+												</div>	
+											</div><!-- dplay-tbl -->
+									</div><!-- hot-news -->
+								</div><!-- card -->
+							</div><!-- col-lg-4 col-md-6 -->
+							
+						</div><!-- row-->	
+					</div><!-- mt-50 mb-20-->	
+					
+					
+					<h4 class="mb-30 mt-20 clearfix"><b>Post Comment</b></h4>
+					
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+							<form class="form-block form-h-55 form-plr-20 form-bg-white" action="/detail/<%=movieInfo.No%>/sent" method="POST">
+								<div class="row">
+									<div class="col-sm-6 mb-30">
+										<input type="text" placeholder="Name" name="ID">
+									</div><!-- col-sm-6-->	
+									
+									<div class="col-sm-6 mb-30">
+										<input type="text" placeholder="password" name ="pw">
+									</div><!-- col-sm-6-->
+									
+									<div class="col-sm-12 mb-30">
+										<textarea class="ptb-20 min-h-200x" placeholder="Comment" name="comment"></textarea>
+									</div><!-- col-sm-12-->
+									
+								</div><!-- row-->
+								<button class="btn-b-lg btn-brdr-grey plr-25 color-ash" type="submit"><b>Post Comment</b></button>
+							</form>
+						</div><!-- col-sm-6-->	
+					</div><!-- row-->	
+					
+					
+					<h4 class="mb-30 mt-50 clearfix"><b>Comments</b></h4>
+					<% for (i in comment) {%>
+					<div class="row">
+						<div class="colsm-12 col-md-12 col-lg-12 col-xl-8">
+							<div class="p-30 bg-white">
+								<div class="row">
+									<div class="col-9 col-lg-9 col-xl-6">
+										
+										<div class="sided-70x">
+											<h5><%=comment[i].ID%></h5>
+											<p class="color-ash">
+											<b><%=comment[i].time%></b></p>
+										</div><!-- sided-80x-->
+									</div><!-- col-md-6-->
+								</div><!-- row-->
+								<p><%=comment[i].Comment%></p>
+							</div><!-- p-30-->	
+						</div><!-- col-sm-6-->	
+					</div><!-- row-->	
+					<% } %>
+					<a class="mt-30 mb-50 mb-sm-20 btn-b-lg btn-brdr-grey plr-25 color-ash" href="#"><b>Load More</b></a>
+					
+				</div><!-- col-sm-9 -->
+				
+				<div class="col-md-12 col-lg-3 bg-2-white ptb-50 pl-30 pl-md-15">
+					<div class="row">
+						<div class="mb-50">
+							<h5 class="mb-30"><b>BOX OFFICE</b></h5>
+							<% for (i in list){%>
+							<div class="sided-80x mb-100">
+								<div class="s-left">
+									<img src="<%=list[i].poster%>" alt="">
+								</div><!-- s-left -->
+								<div class="s-right">
+									<h5 class="pt-5"><a href="#"><b><%=list[i].Name%></b></a></h5>
+								</div><!-- s-left -->
+								<br><br><br>
+								<% } %>
+							</div><!-- sided-80x -->
+						</div><!-- mb-50 -->
+					</div><!-- row -->
+				</div><!-- col-sm-3 -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</section>
+	
+	
+	<footer class="bg-191 color-ash text-left center-sm-text">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-md-4 col-lg-6 mb-30">
+						<div class="card h-100">
+							<div class="dplay-tbl">
+								<div class="dplay-tbl-cell">
+									<!--<a href="#"><img src="images/logo-white.png"></a>-->
+									<p class="color-ash mt-25">
+										Copyright &copy;
+										<script>document.write(new Date().getFullYear());</script> 
+										CaspstoneDesign 2019 by <a href="https://www.dankook.ac.kr" target="_blank">D-TUX of Dankook Univ.</a>
+										All rights reserved | This template is made with by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+										<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+									</p>
+								</div><!-- dplay-tbl-cell -->
+							</div><!-- dplay-tbl -->
+						</div><!-- card -->
+					</div><!-- col-lg-4 col-md-6 -->
+				</div><!-- row -->
+			</div><!-- container -->
+		</footer>
+	
+	<!-- SCIPTS -->
+	<script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
+	<script src="plugin-frameworks/bootstrap.min.js"></script>
+	<script src="plugin-frameworks/swiper.js"></script>
+	<script src="common/scripts.js"></script>
+	
+	<script>
+			var width = document.getElementById('area_cons').clientWidth, 
+				height = document.getElementById('area_cons').clientHeight;
+			var svg = d3.select("area_cons").append("svg")
+				.attr("width", width)
+				.attr("height", height)
+				.append('g')
+				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+			var svg2 = d3.select("area_pros").append("svg")
+				.attr("width", width)
+				.attr("height", height)
+				.append('g')
+				.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+			var dataset = []
+			var max_freq 
+			var dataset2  = []
+			var max_freq2
+			var tmp = <%-JSON.stringify(kwdCons)%>
+			for(i in tmp){
+				dataset.push({text:tmp[i].Keyword,frequency:tmp[i].Count})
+			}
+			max_freq = dataset[0].frequency
+			for(i in dataset){
+				if(dataset[i].frequency > max_freq){
+					max_freq = dataset[i].frequency
+				}
+			}
+			var tmp2 = <%-JSON.stringify(kwdPros)%>
+			for(i in tmp2){
+				dataset2.push({text:tmp2[i].Keyword,frequency:tmp2[i].Count})
+			}
+			max_freq2 = dataset2[0].frequency
+			for(i in dataset2){
+				if(dataset2[i].frequency > max_freq){
+					max_freq = dataset2[i].frequency
+				}
+			}
+			var color = d3.scale.linear()
+				.domain([0,1,2,3,4,5,6,10,15,20,100])
+				.range(["#fbc280", "#405275", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+
+			var showCloud = function(data, svg_data, freq){
+				d3.layout.cloud().size([width, height])
+					.words(data)
+					.rotate(function (d) {
+							return d.text.length < 3 ? 0 : 90;
+						})
+					.fontSize(function(d) { return (d.frequency/freq)*100; })
+					.on("end", draw)
+					.start();
+				function draw(words) {
+					var cloud = svg_data.selectAll("text").data(words)
+					cloud.enter()
+						.append("text")
+						.style("font-size", 1)
+						.style("fill", function(d, i) { return color(i); })
+						.style("fill-opacity", .5)
+						.attr("text-anchor", "middle") 
+						.attr("transform", function(d) {
+							return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+						})
+						.text(function(d) { return d.text; })
+					cloud.transition()
+						.duration(600)
+						.style("font-size", function (d) {
+							return d.size;
+						})
+						.attr("transform", function (d) {
+							return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+						})
+						.style("fill-opacity", 1);
+				}			
+			}
+			
+		showCloud(dataset, svg, max_freq);
+		setInterval(function(){
+			showCloud(dataset, svg, max_freq)
+		},2000) 	
+		showCloud(dataset2, svg2, max_freq2);
+		setInterval(function(){
+			showCloud(dataset2, svg2, max_freq2)
+		},2000) 
+			
+		</script>
+</body>
+</html>
